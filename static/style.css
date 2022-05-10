@@ -1,0 +1,52 @@
+body {
+    background-color: bisque;  
+    background-image: url("https://image.freepik.com/free-vector/seamless-chili-pepper-pattern_118500-53.jpg");
+    background-repeat: repeat;
+}
+
+.flexnav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+
+}
+.flexnav a {
+    display: block;
+    background-color: rgb(3, 15, 11);
+    text-decoration: none;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    color: #f2f2f2;
+    opacity: 90%;
+    text-align: center;
+    padding: 14px 16px;
+    font-size: 17px;
+    
+}
+.flexnav a:hover {
+    display: block;
+    background-color: rgb(248, 246, 248);
+    color: black;
+}
+
+.flexboxContainer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.responsive_img{
+  max-width: 100%;
+  height: auto;
+}
+
+.headerAlign{
+    text-align: center;
+}
+h1{
+    font-family:'Courier New', Courier, monospace;
+    display: block;
+    background-color: black;
+    opacity: 90%;
+    color: #f2f2f2;
+}

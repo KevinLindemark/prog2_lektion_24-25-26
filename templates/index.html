@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block head %}
+<title>Sensors</title>
+{% endblock %}
+
+{% block content %}
+<h1>Light control</h1>
+	<div class="flexnav">
+	<h1>Adjust red <span id="red_led_span">{{redStartVal}}</<span></h1>
+	</div> 
+	<div class="flexnav">		
+        <input oninput="adjust_red()" type="range" min="0" max="50" id="red_brightness">      
+	</div>
+	<div class="flexnav">
+		<h1> Adjust blue <span id="blue_led_span">{{blueStartVal}}</<span></h1>
+	</div>
+	<div class="flexnav">
+	<input oninput="adjust_blue()" type="range" min="0" max="50" id="blue_brightness">
+	</div>
+</br>
+    <div class="flexboxContainer">
+        <img src="{{ url_for('video_feed') }}" class="responsive_img">
+    </div>
+	    <script>
+
+            var socket = io();
+            function adjust_red() {
+                socket.emit('red_led_change',
+                {
+                    'red_led_brightness' : document.getElementById('red_brightness').value
+                })
+
+                var val_red = document.getElementById("red_brightness").value //gets the oninput value
+                document.getElementById('red_led_span').innerText = val_red
+            }
+
+            function adjust_blue() {
+                socket.emit('blue_led_change',
+                {
+                    'blue_led_brightness' : document.getElementById('blue_brightness').value
+                })
+                var val_blue = document.getElementById("blue_brightness").value //gets the oninput value
+                document.getElementById('blue_led_span').innerText = val_blue
+            }
+        </script>
+{% endblock %}

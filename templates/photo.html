@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block head %}
+<title>Photo</title>
+{% endblock %}
+{% block content %}
+<h1>Last photo taken :<span id="timespan">{{timestamp}}</span></h1>
+
+<div class="flexboxContainer">
+<img src="../static/test.jpeg" class="responsive_img" id="img_update">
+</div>
+
+<script>
+    //Modify the src attribute of the image with the ID "img_update"
+    document.getElementById("img_update").src = '../static/'+document.getElementById('timespan').innerText+'.jpeg';
+    console.log('../static/'+document.getElementById('timespan').innerText+'.jpeg')
+</script>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block head %}
+<title>Video</title>
+{% endblock %}
+{% block content %}
+<h1>Video</h1>
+<div class="flexboxContainer">
+<img src="{{ url_for('video_feed') }}" class="responsive_img">
+</div>
+{% endblock %}
