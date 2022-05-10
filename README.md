@@ -1,4 +1,4 @@
-# prog2_lektion_24-25-26
+# prog2_lektion_24-25-26 - IOT greenhouse with Raspberry Pi Zero 2 W, blue and red LED lamp, camera, waterpump and soilmoisture monitoring.
 
 # create and activate python virtual environment
 python -m venv .venv
