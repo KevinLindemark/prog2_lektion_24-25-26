@@ -5,6 +5,14 @@
 {% block content %}
 <h1>Soil moisture</h1>
 <div class="flexboxContainer">
-<h1>{{moisture}} %</h1>
+<h1 id="soil_header">{{moisture}} %</h1>
 </div>
+<script>
+    var socket = io();
+    socket.on('soil_measure', 
+    function(e){
+        document.getElementById('soil_header').innerText = e
+    }
+    )
+</script>
 {% endblock %}

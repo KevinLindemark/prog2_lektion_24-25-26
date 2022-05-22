@@ -1,3 +1,4 @@
+from threading import Thread
 from flask import Flask, render_template, Response
 import pigpio
 from time import sleep
@@ -88,6 +89,14 @@ def video_feed():
     """Video streaming route. Put this in the src attribute of an img tag."""
     return Response(gen(Camera()),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
+def send_soil():
+    while True:            
+        moisture = adc_moist.get_soilmoisture_percentage()
+        socketio.emit('soil_measure', moisture)
+        sleep(2)
+
+soil_thread = Thread(target=send_soil)
+soil_thread.start()
 
 @app.route('/soil')
 def soil():
