@@ -19,3 +19,8 @@ sudo i2cdetect -y 1
 ![09-05-2022-18-46-52](https://user-images.githubusercontent.com/58036568/167585138-aab13f8f-1aec-4c9a-987a-3312a1cc89b6.jpeg)
 ![09-05-2022-18-48-23](https://user-images.githubusercontent.com/58036568/167585143-f7368bd9-34d4-4b58-80c0-72176f08bfb6.jpeg)
 ![09-05-2022-19-10-59](https://user-images.githubusercontent.com/58036568/167585145-a39ba608-a483-4b85-bf49-5b059428a9bd.jpeg)
+
+# Scheduler for light and pump needs to be started on boot 
+see this guide for more information: https://github.com/thagrol/Guides/blob/main/boot.pdf 
+
+The pump gives aproximately 200 mililiters of water per 10 seconds 

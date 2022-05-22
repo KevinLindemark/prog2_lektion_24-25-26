@@ -31,7 +31,8 @@ class PumpScheduler:
             try:
                 print("soil is dry starting pump for 10 seconds")
                 self.pi.write(self.PUMP_GPIO_PIN, 1)
-                time.sleep(10)
+                # the pump gives aproximately 200 mililiters of water per 10 seconds
+                time.sleep(20)
                 self.pi.write(self.PUMP_GPIO_PIN, 0)
             except:
                 print("Something went wrong, stopping pump")
@@ -44,7 +45,7 @@ if __name__ == "__main__":
     # create instance for Pump Scheduler 
     pump = PumpScheduler(PUMP_GPIO_PIN)
     # morning watering
-    pump.add_schedule("20:42")
+    pump.add_schedule("21:07")
     # initialize red LED schedule
     pump.init_schedule()
     
