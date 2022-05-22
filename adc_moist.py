@@ -21,7 +21,7 @@ def get_soilmoisture_percentage():
             moist_perc = 100.00
         if moist_perc < 0:
             moist_perc = 0.00
-        print("Moisture percentage: ", moist_perc)
+        #print("Moisture percentage: ", moist_perc)
         return moist_perc
     except:
         print("Sensor probably busy")
