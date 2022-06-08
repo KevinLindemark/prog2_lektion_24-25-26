@@ -5,14 +5,58 @@
 {% block content %}
 <h1>Soil moisture</h1>
 <div class="flexboxContainer">
-<h1 id="soil_header">{{moisture}} %</h1>
+<h1 id="moisture_text">{{moisture}} %</h1>
+</br>
 </div>
+<div class="flexboxContainer">
+<h1>Water pump status</h1>
+</div>
+<!-- to be continued -->
+<div id="app-cover">
+    <div class="row">  
+      <div class="toggle-button-cover">
+        <div class="button-cover">
+          <div class="button b2" id="button-15">
+            <input type="checkbox" class="checkbox" id="myButton" onchange="give_water()"/>
+            <div class="knobs"></div>
+            <div class="layer"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
 <script>
-    var socket = io();
-    socket.on('soil_measure', 
+    var socket = io()
+    socket.on('soil',
     function(e){
-        document.getElementById('soil_header').innerText = e + " %"
+        console.log("moisture " + e);
+        document.getElementById('moisture_text').innerText = "Moisture level is: " + e + " % ";
     }
     )
+
+    socket.on('pump',
+    function(e){
+      console.log("pump state " + e)
+      if (e == 0){
+        document.getElementById("myButton").checked = true;
+      }
+      else{
+        document.getElementById("myButton").checked = false;
+      }
+    }
+    )
+
+function give_water(){
+  
+  console.log(document.getElementById('myButton').checked ? 'off' : 'on')
+  button_status = document.getElementById('myButton').checked ? 'off' : 'on'
+  if (button_status == 'on'){
+    socket.emit("start_pump")
+    alert("starting water pump for 1 second")
+  }
+}
+
 </script>
 {% endblock %}
