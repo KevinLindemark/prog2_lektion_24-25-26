@@ -2,7 +2,10 @@ import schedule
 import time
 import pigpio
 import adc_moist
+<<<<<<< HEAD
 import insert_soilmoisture_data
+=======
+>>>>>>> 5794b533bf8062986eabb2f9426d8d83c0e278d4
 # Global variables
 PUMP_GPIO_PIN = 17
 
@@ -25,6 +28,7 @@ class PumpScheduler:
             schedule.every().day.at(self.timeList[i]).do(self.change_pump_state)
 
     def change_pump_state(self):
+<<<<<<< HEAD
         """Sets state for Pump 1 for ON 0 for OFF"""
         soil_moisture = adc_moist.get_soilmoisture_percentage()
         print(f"Checking soilmosture and it is {soil_moisture}% moist")
@@ -34,6 +38,12 @@ class PumpScheduler:
             print("no data to insert in database")
     
         if soil_moisture < 30:
+=======
+        """Sets state for Pump - 1 for ON 0 for OFF"""
+        soil_moisture = adc_moist.get_soilmoisture_percentage()
+        print(f"Checking soilmosture and it is {soil_moisture}% moist")
+        if soil_moisture < 10:
+>>>>>>> 5794b533bf8062986eabb2f9426d8d83c0e278d4
             try:
                 print("soil is dry starting pump for 10 seconds")
                 self.pi.write(self.PUMP_GPIO_PIN, 1)
