@@ -1,10 +1,7 @@
-<<<<<<< HEAD
 import base64
 from io import BytesIO
 from matplotlib.figure import Figure
 import sqlite3
-=======
->>>>>>> 5794b533bf8062986eabb2f9426d8d83c0e278d4
 from threading import Thread
 from flask import Flask, render_template, Response
 import pigpio
@@ -15,11 +12,8 @@ from datetime import datetime
 from camera_pi import Camera
 import adc_moist
 
-<<<<<<< HEAD
 conn=sqlite3.connect('database.sqlite', check_same_thread=False)
 curs=conn.cursor()
-=======
->>>>>>> 5794b533bf8062986eabb2f9426d8d83c0e278d4
 
 pi = pigpio.pi()
 GPIO_RED_LED = 13
@@ -140,21 +134,14 @@ pump_monitor_thread = Thread(target=pump_monitor)
 pump_monitor_thread.start()
 @app.route('/soil')
 def soil():
-<<<<<<< HEAD
     soil_plot = plot_soilmoisture()
-=======
->>>>>>> 5794b533bf8062986eabb2f9426d8d83c0e278d4
     LEDValues.state = True
     LEDValues.blue_val = pi.get_PWM_dutycycle(GPIO_BLUE_LED)
     LEDValues.red_val = pi.get_PWM_dutycycle(GPIO_RED_LED)
     pi.set_PWM_dutycycle(GPIO_BLUE_LED, 0)
     pi.set_PWM_dutycycle(GPIO_RED_LED, 0)
     pump_startval = pi.read(GPIO_PUMP)
-<<<<<<< HEAD
     return render_template('soil.html', moisture = moisture, pump_startval = pump_startval, soil_plot = soil_plot)
-=======
-    return render_template('soil.html', moisture = moisture, pump_startval = pump_startval)
->>>>>>> 5794b533bf8062986eabb2f9426d8d83c0e278d4
 @socketio.on('start_pump')
 def start_pump():
     try:
@@ -168,7 +155,6 @@ def start_pump():
         print("Something went wrong, stopping pump")
         pi.write(GPIO_PUMP, 0)
 
-<<<<<<< HEAD
 
 def getHistData (numSamples):
 	curs.execute("SELECT * FROM soilmoisture ORDER BY timestamp DESC LIMIT "+str(numSamples))
@@ -218,7 +204,5 @@ def plot_soilmoisture():
     #print(data)
     return data
 
-=======
->>>>>>> 5794b533bf8062986eabb2f9426d8d83c0e278d4
 if __name__ == '__main__':
     socketio.run(app, port="9999", host="0.0.0.0", debug=True)
