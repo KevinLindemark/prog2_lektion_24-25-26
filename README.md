@@ -24,3 +24,7 @@ sudo i2cdetect -y 1
 see this guide for more information: https://github.com/thagrol/Guides/blob/main/boot.pdf 
 
 The pump gives aproximately 200 mililiters of water per 10 seconds 
+
+# to remove numpy import errors install the following:
+sudo apt-get install libatlas-base-dev
+sudo apt-get install libopenjp2-7
